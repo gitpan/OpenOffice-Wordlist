@@ -9,7 +9,7 @@ OpenOffice::Wordlist - Read/write OpenOffice.org wordlists
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
