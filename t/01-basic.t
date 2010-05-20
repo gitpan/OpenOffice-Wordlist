@@ -24,3 +24,5 @@ $dict->append( qw(Arial CAcert CAcert.org Cacert.org Joan's
 $dict->write("test5.dic");
 ok( !compare("wbswg5.dic", "test5.dic"), "create WBSWG5 dict" );
 
+diag(`ls -la`);
+diag(`cmp wbswg6.dic test6.dic`);
