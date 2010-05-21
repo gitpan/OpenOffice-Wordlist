@@ -9,7 +9,7 @@ OpenOffice::Wordlist - Read/write OpenOffice.org wordlists
 
 =cut
 
-our $VERSION = '0.03.01';
+our $VERSION = '0.03.02';
 
 =head1 SYNOPSIS
 
@@ -101,7 +101,7 @@ sub read {
     my $type = $self->_set_type($1);
 
     my $lang = substr( $data, 0, 2, '' );
-    $self->{language} = unpack( "S", $lang )
+    $self->{language} = unpack( "v", $lang )
       unless defined $self->{language};
 
     my $neg = substr( $data, 0, 1, '' );
@@ -110,7 +110,7 @@ sub read {
 
     while ( $data ) {
 	my $length = substr( $data, 0, 2, '' );
-	$length = unpack( "S", $length );
+	$length = unpack( "v", $length );
 	push( @{$self->{words}},
 	      decode( $self->{encoding}, substr( $data, 0, $length, '' ) ) );
     }
@@ -183,7 +183,7 @@ sub write {
       or die("$file: $!\n");
 
     print { $dict } ( $self->__pfx( $self->{type} ),
-		      pack( "S", $self->{language} || 0),
+		      pack( "v", $self->{language} || 0),
 		      pack( "C", $self->{neg} || 0 ) );
 
     require bytes;
@@ -202,7 +202,7 @@ sub write {
 sub __pfx {
     my ( $self, $string ) = @_;
     $string = encode( $self->{encoding}, $string );
-    pack( 'S', bytes::length($string) ) . $string;
+    pack( "v", bytes::length($string) ) . $string;
 }
 
 =head1 EXAMPLE
