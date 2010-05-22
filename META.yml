@@ -1,6 +1,6 @@
 ---
 name: OpenOffice-Wordlist
-version: 0.03.02
+version: 0.04
 author:
   - 'Johan Vromans <jv@cpan.org>'
 abstract: Read/write OpenOffice.org wordlists
@@ -13,7 +13,7 @@ build_requires:
 provides:
   OpenOffice::Wordlist:
     file: lib/OpenOffice/Wordlist.pm
-    version: 0.03.02
+    version: 0.04
 generated_by: Module::Build version 0.32
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
